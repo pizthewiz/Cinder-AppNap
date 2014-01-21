@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+    name="Cinder-AppNap"
+    id="com.chordedconstructions.fleshworld.cinder-appnap"
+    git="https://github.com/pizthewiz/Cinder-AppNap.git"
+    author="Jean-Pierre Mouilleseaux"
+    summary=""
+    url="https://github.com/pizthewiz/Cinder-AppNap"
+    >
+    <supports os="macosx" />
+    <header>src/Cinder-AppNap.h</header>
+    <source>src/Cinder-AppNap.mm</source>
+</block>
+</cinder>
