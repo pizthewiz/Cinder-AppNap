@@ -16,6 +16,8 @@
 
 namespace Cinder { namespace AppNap {
 
+void PerformActivity(const std::string reason, std::function<void (void)> func);
+
 typedef std::shared_ptr<class Activity> ActivityRef;
 
 class Activity : public std::enable_shared_from_this<Activity> {

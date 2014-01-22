@@ -10,6 +10,13 @@
 
 namespace Cinder { namespace AppNap {
 
+void PerformActivity(const std::string reason, std::function<void (void)> func) {
+    ActivityRef activity = Activity::create(reason);
+    activity->begin();
+    func();
+    activity->end();
+}
+
 ActivityRef Activity::create(const std::string reason) {
     return ActivityRef(new Activity(reason))->shared_from_this();
 }
