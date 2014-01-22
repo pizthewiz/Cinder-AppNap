@@ -11,3 +11,18 @@ void CaptureApp::setup() {
 void CaptureApp::shutdown() {
     mActivity->end();
 }
+```
+
+For short-running operations the more compact `ProcessActivity` can be used:
+```C++
+void VisionApp::setup() {
+    PerformActivity("Preprocess input images", [this](void) {
+        auto handle = std::async([this](void) {
+            preprocessImages();
+        });
+        handle.wait();
+
+        calculateResults();
+    });
+}
+```
