@@ -3,6 +3,18 @@
 
 ### EXAMPLE
 ```C++
+void VisionApp::setup() {
+    PerformActivity("Preprocess images", [this](void) {
+        auto handle = std::async([this](void) {
+            preprocessImages();
+        });
+        handle.wait();
+    });
+}
+```
+
+Longer-running operations can use a more explicit form
+```C++
 void CaptureApp::setup() {
     mActivity = Activity::create("OSC I/O and maintain camera control");
     mActivity->begin();
@@ -10,19 +22,5 @@ void CaptureApp::setup() {
 
 void CaptureApp::shutdown() {
     mActivity->end();
-}
-```
-
-For short-running operations the more compact `ProcessActivity` can be used:
-```C++
-void VisionApp::setup() {
-    PerformActivity("Preprocess input images", [this](void) {
-        auto handle = std::async([this](void) {
-            preprocessImages();
-        });
-        handle.wait();
-
-        calculateResults();
-    });
 }
 ```
