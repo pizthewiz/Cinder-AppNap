@@ -12,11 +12,6 @@
     #error Target platform unsupported by Cinder-AppNap
 #endif
 
-#if !defined(__OBJC__)
-    #define id _AVOID_ID_COLLISION_
-    #undef id
-#endif
-
 #import "cinder/Cinder.h"
 
 namespace Cinder { namespace AppNap {
@@ -35,7 +30,7 @@ public:
 private:
     Activity(const std::string reason) : mReason(reason) {}
 
-    id mActivity;
+    void* mActivity;
     std::string mReason;
 };
 

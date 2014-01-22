@@ -23,7 +23,7 @@ void Activity::begin() {
 
     @autoreleasepool {
         mActivity = [[NSProcessInfo processInfo] beginActivityWithOptions:NSActivityIdleSystemSleepDisabled | NSActivitySuddenTerminationDisabled reason:@(mReason.c_str())];
-        [mActivity retain];
+        [(id<NSObject>)mActivity retain];
     }
 }
 
@@ -33,9 +33,9 @@ void Activity::end() {
     }
 
     @autoreleasepool {
-        [[NSProcessInfo processInfo] endActivity:mActivity];
-        [mActivity release];
-        mActivity = nil;
+        [[NSProcessInfo processInfo] endActivity:(id<NSObject>)mActivity];
+        [(id<NSObject>)mActivity release];
+        mActivity = NULL;
     }
 }
 
