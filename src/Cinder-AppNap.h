@@ -12,7 +12,31 @@
     #error Target platform unsupported by Cinder-AppNap
 #endif
 
+#if !defined(__OBJC__)
+    #define id _AVOID_ID_COLLISION_
+    #undef id
+#endif
+
 #import "cinder/Cinder.h"
 
 namespace Cinder { namespace AppNap {
+
+typedef std::shared_ptr<class Activity> ActivityRef;
+
+class Activity : public std::enable_shared_from_this<Activity> {
+public:
+    static ActivityRef create(const std::string reason);
+
+    void begin();
+    void end();
+
+    std::string getReason() const { return mReason; }
+
+private:
+    Activity(const std::string reason) : mReason(reason) {}
+
+    id mActivity;
+    std::string mReason;
+};
+
 }}
