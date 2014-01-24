@@ -8,7 +8,7 @@ While the CinderBlock is (perhaps poorly) named `Cinder-AppNap`, an application 
 ### EXAMPLE
 ```C++
 void VisionApp::setup() {
-    PerformActivity("Preprocess images", [this](void) {
+    Cinder::AppNap::PerformActivity("Preprocess images", [this](void) {
         auto handle = std::async([this](void) {
             preprocessImages();
         });
@@ -20,11 +20,10 @@ void VisionApp::setup() {
 Long-running operations can use a more explicit form:
 ```C++
 void CaptureApp::setup() {
-    mActivity = Activity::create("Maintain camera control");
-    mActivity->begin();
+    Cinder::AppNap::BeginActivity("Maintain camera control");
 }
 
 void CaptureApp::shutdown() {
-    mActivity->end();
+    Cinder::AppNap::BeginActivity();
 }
 ```

@@ -10,39 +10,38 @@
 
 namespace Cinder { namespace AppNap {
 
+NSObject* activity;
+
 void PerformActivity(const std::string reason, std::function<void (void)> func) {
-    ActivityRef activity = Activity::create(reason);
-    activity->begin();
+    if (activity) {
+        return;
+    }
+
+    BeginActivity(reason);
     func();
-    activity->end();
+    EndActivity();
 }
 
-ActivityRef Activity::create(const std::string reason) {
-    return ActivityRef(new Activity(reason))->shared_from_this();
-}
-
-#pragma mark -
-
-void Activity::begin() {
-    if (mActivity) {
+void BeginActivity(const std::string reason) {
+    if (activity) {
         return;
     }
 
     @autoreleasepool {
-        mActivity = [[NSProcessInfo processInfo] beginActivityWithOptions:NSActivityIdleSystemSleepDisabled | NSActivitySuddenTerminationDisabled reason:@(mReason.c_str())];
-        [(id<NSObject>)mActivity retain];
+        activity = [[NSProcessInfo processInfo] beginActivityWithOptions:NSActivityIdleSystemSleepDisabled | NSActivitySuddenTerminationDisabled reason:@(reason.c_str())];
+        [activity retain];
     }
 }
 
-void Activity::end() {
-    if (!mActivity) {
+void EndActivity() {
+    if (!activity) {
         return;
     }
 
     @autoreleasepool {
-        [[NSProcessInfo processInfo] endActivity:(id<NSObject>)mActivity];
-        [(id<NSObject>)mActivity release];
-        mActivity = NULL;
+        [[NSProcessInfo processInfo] endActivity:activity];
+        [activity release];
+        activity = nil;
     }
 }
 

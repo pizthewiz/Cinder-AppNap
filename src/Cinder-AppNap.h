@@ -17,23 +17,7 @@
 namespace Cinder { namespace AppNap {
 
 void PerformActivity(const std::string reason, std::function<void (void)> func);
-
-typedef std::shared_ptr<class Activity> ActivityRef;
-
-class Activity : public std::enable_shared_from_this<Activity> {
-public:
-    static ActivityRef create(const std::string reason);
-
-    void begin();
-    void end();
-
-    std::string getReason() const { return mReason; }
-
-private:
-    Activity(const std::string reason) : mReason(reason) {}
-
-    void* mActivity;
-    std::string mReason;
-};
+void BeginActivity(const std::string reason);
+void EndActivity();
 
 }}
