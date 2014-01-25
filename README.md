@@ -24,6 +24,13 @@ void CaptureApp::setup() {
 }
 
 void CaptureApp::shutdown() {
-    Cinder::AppNap::BeginActivity();
+    Cinder::AppNap::EndActivity();
 }
+```
+
+#### NOTE
+
+System power assertions can be verified with the `pmset` command line tool:
+```sh
+$ pmset -g assertions
 ```
