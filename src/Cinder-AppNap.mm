@@ -12,7 +12,7 @@ namespace Cinder { namespace AppNap {
 
 NSObject* activity;
 
-void PerformActivity(const std::string reason, std::function<void (void)> func) {
+void PerformActivity(const std::string& reason, std::function<void (void)>& func) {
     if (activity) {
         return;
     }
@@ -22,7 +22,7 @@ void PerformActivity(const std::string reason, std::function<void (void)> func) 
     EndActivity();
 }
 
-void BeginActivity(const std::string reason) {
+void BeginActivity(const std::string& reason) {
     if (activity) {
         return;
     }

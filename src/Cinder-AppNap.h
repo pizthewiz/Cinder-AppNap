@@ -16,8 +16,8 @@
 
 namespace Cinder { namespace AppNap {
 
-void PerformActivity(const std::string reason, std::function<void (void)> func);
-void BeginActivity(const std::string reason);
+void PerformActivity(const std::string& reason, const std::function<void (void)>& func);
+void BeginActivity(const std::string& reason);
 void EndActivity();
 
 }}
