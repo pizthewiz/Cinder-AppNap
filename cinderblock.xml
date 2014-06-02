@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinder>
 <block
-    name="Cinder-AppNap"
+    name="AppNap"
     id="com.chordedconstructions.fleshworld.cinder-appnap"
     git="https://github.com/pizthewiz/Cinder-AppNap.git"
     author="Jean-Pierre Mouilleseaux"
-    summary=""
+    summary="Access to the OS X 10.9 Activity API"
     url="https://github.com/pizthewiz/Cinder-AppNap"
     >
     <supports os="macosx" />
