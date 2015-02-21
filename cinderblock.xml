@@ -9,7 +9,7 @@
     url="https://github.com/pizthewiz/Cinder-AppNap"
     >
     <supports os="macosx" />
-    <header>src/Cinder-AppNap.h</header>
+    <header>include/Cinder-AppNap.h</header>
     <source>src/Cinder-AppNap.mm</source>
 </block>
 </cinder>
