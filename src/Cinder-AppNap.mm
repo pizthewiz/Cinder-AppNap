@@ -3,10 +3,13 @@
 //  Cinder-AppNap
 //
 //  Created by Jean-Pierre Mouilleseaux on 21 Jan 2014.
-//  Copyright 2014 Chorded Constructions. All rights reserved.
+//  Copyright 2014-2015 Chorded Constructions. All rights reserved.
 //
 
 #import "Cinder-AppNap.h"
+#if defined(__OBJC__)
+    #import <Cocoa/Cocoa.h>
+#endif
 
 namespace Cinder { namespace AppNap {
 
