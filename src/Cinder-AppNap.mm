@@ -31,7 +31,7 @@ void BeginActivity(const std::string& reason) {
     }
 
     @autoreleasepool {
-        activity = [[NSProcessInfo processInfo] beginActivityWithOptions:NSActivityIdleSystemSleepDisabled | NSActivitySuddenTerminationDisabled reason:@(reason.c_str())];
+        activity = [[NSProcessInfo processInfo] beginActivityWithOptions:NSActivityIdleSystemSleepDisabled | NSActivityIdleDisplaySleepDisabled reason:@(reason.c_str())];
         [activity retain];
     }
 }
