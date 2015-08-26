@@ -5,6 +5,8 @@ OS X 10.9 uses heuristics to improve system battery life, performance and respon
 
 While the CinderBlock is (perhaps poorly) named `Cinder-AppNap`, an application can provide hints that affect other behaviors like timer coalescing and the application termination. `Cinder-AppNap` currently disables idle system sleep and sudden termination which is hopefully a fit for most Cinder application needs, but could certainly be made more flexible should the need arise.
 
+**NOTE** - The exceptional need hint can be sent from Cinder, via [`AppBase::Settings::setPowerManagementEnabled()`](https://github.com/cinder/Cinder/blob/master/include/cinder/app/AppBase.h#L141) or [`AppBase::enablePowerManagement()`](https://github.com/cinder/Cinder/blob/master/include/cinder/app/AppBase.h#L277); see PR [#867](https://github.com/cinder/Cinder/pull/867) for more detail.
+
 ### EXAMPLE
 ```C++
 void VisionApp::setup() {
